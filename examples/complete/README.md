@@ -19,7 +19,7 @@ module "nxos_ospf" {
   name = "OSPF1"
   vrfs = [
     {
-      name                    = "default"
+      vrf                     = "default"
       admin_state             = false
       bandwidth_reference     = 1000
       banwidth_reference_unit = "gbps"

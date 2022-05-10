@@ -43,7 +43,7 @@ variable "vrfs" {
   Choices `authentication_type`: `unspecified`, `simple`, `md5`, `none`. Default value `authentication_type`: `unspecified`.
   EOT
   type = list(object({
-    name                    = string
+    vrf                     = string
     admin_state             = optional(bool)
     bandwidth_reference     = optional(number)
     banwidth_reference_unit = optional(string)

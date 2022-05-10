@@ -1,19 +1,19 @@
 locals {
-  vrf_map = { for v in var.vrfs : v.name => v }
+  vrf_map = { for v in var.vrfs : v.vrf => v }
   area_map = merge([
     for vrf_entry in var.vrfs : vrf_entry.areas == null ? {} : {
-      for area_entry in vrf_entry.areas : "${vrf_entry.name}_${area_entry.area}" => merge(area_entry, { "vrf" : vrf_entry.name })
+      for area_entry in vrf_entry.areas : "${vrf_entry.vrf}_${area_entry.area}" => merge(area_entry, { "vrf" : vrf_entry.vrf })
     }
   ]...)
   interface_map = merge([
     for vrf_entry in var.vrfs : vrf_entry.interfaces == null ? {} : {
-      for interface_entry in vrf_entry.interfaces : "${vrf_entry.name}_${interface_entry.interface}" => merge(interface_entry, { "vrf" : vrf_entry.name })
+      for interface_entry in vrf_entry.interfaces : "${vrf_entry.vrf}_${interface_entry.interface}" => merge(interface_entry, { "vrf" : vrf_entry.vrf })
     }
   ]...)
 
   interface_auth_map = merge([
     for vrf_entry in var.vrfs : vrf_entry.interfaces == null ? {} : {
-      for interface_entry in vrf_entry.interfaces : "${vrf_entry.name}_${interface_entry.interface}" => merge(interface_entry, { "vrf" : vrf_entry.name })
+      for interface_entry in vrf_entry.interfaces : "${vrf_entry.vrf}_${interface_entry.interface}" => merge(interface_entry, { "vrf" : vrf_entry.vrf })
       if interface_entry.authentication_type != null
     }
   ]...)
@@ -28,7 +28,7 @@ resource "nxos_ospf_vrf" "ospfDom" {
   for_each                = local.vrf_map
   device                  = var.device
   instance_name           = var.name
-  name                    = each.value.name
+  name                    = each.value.vrf
   admin_state             = each.value.admin_state == null || each.value.admin_state == true ? "enabled" : "disabled"
   bandwidth_reference     = each.value.bandwidth_reference != null ? each.value.bandwidth_reference : 40000
   banwidth_reference_unit = each.value.banwidth_reference_unit != null ? each.value.banwidth_reference_unit : "mbps"
