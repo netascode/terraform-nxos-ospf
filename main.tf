@@ -29,11 +29,11 @@ resource "nxos_ospf_vrf" "ospfDom" {
   device                  = var.device
   instance_name           = var.name
   name                    = each.value.vrf
-  admin_state             = each.value.admin_state == null || each.value.admin_state == true ? "enabled" : "disabled"
-  bandwidth_reference     = each.value.bandwidth_reference != null ? each.value.bandwidth_reference : 40000
-  banwidth_reference_unit = each.value.banwidth_reference_unit != null ? each.value.banwidth_reference_unit : "mbps"
-  distance                = each.value.distance != null ? each.value.distance : 110
-  router_id               = each.value.router_id != null ? each.value.router_id : "0.0.0.0"
+  admin_state             = each.value.admin_state == true ? "enabled" : "disabled"
+  bandwidth_reference     = each.value.bandwidth_reference
+  banwidth_reference_unit = each.value.banwidth_reference_unit
+  distance                = each.value.distance
+  router_id               = each.value.router_id
 
   depends_on = [
     nxos_ospf_instance.ospfInst
@@ -46,9 +46,9 @@ resource "nxos_ospf_area" "ospfArea" {
   instance_name       = var.name
   vrf_name            = each.value.vrf
   area_id             = each.value.area
-  authentication_type = each.value.authentication_type != null ? each.value.authentication_type : "unspecified"
-  cost                = each.value.cost != null ? each.value.cost : 1
-  type                = each.value.type != null ? each.value.type : "regular"
+  authentication_type = each.value.authentication_type
+  cost                = each.value.cost
+  type                = each.value.type
 
   depends_on = [
     nxos_ospf_vrf.ospfDom
@@ -61,15 +61,15 @@ resource "nxos_ospf_interface" "ospfIf" {
   instance_name         = var.name
   vrf_name              = each.value.vrf
   interface_id          = each.value.interface
-  advertise_secondaries = each.value.advertise_secondaries != null ? each.value.advertise_secondaries : true
-  area                  = each.value.area != null ? each.value.area : "0.0.0.0"
-  bfd                   = each.value.bfd != null ? each.value.bfd : "unspecified"
-  cost                  = each.value.cost != null ? each.value.cost : 0
-  dead_interval         = each.value.dead_interval != null ? each.value.dead_interval : 0
-  hello_interval        = each.value.hello_interval != null ? each.value.hello_interval : 10
-  network_type          = each.value.network_type != null ? each.value.network_type : "unspecified"
-  passive               = each.value.passive != null ? each.value.passive : "unspecified"
-  priority              = each.value.priority != null ? each.value.priority : 1
+  advertise_secondaries = each.value.advertise_secondaries
+  area                  = each.value.area
+  bfd                   = each.value.bfd
+  cost                  = each.value.cost
+  dead_interval         = each.value.dead_interval
+  hello_interval        = each.value.hello_interval
+  network_type          = each.value.network_type
+  passive               = each.value.passive
+  priority              = each.value.priority
 
   depends_on = [
     nxos_ospf_vrf.ospfDom
@@ -83,11 +83,11 @@ resource "nxos_ospf_authentication" "ospfAuthNewP" {
   vrf_name            = each.value.vrf
   interface_id        = each.value.interface
   key                 = each.value.authentication_key
-  key_id              = each.value.authentication_key_id != null ? each.value.authentication_key_id : 0
-  key_secure_mode     = each.value.authentication_key_secure_mode != null ? each.value.authentication_key_secure_mode : false
+  key_id              = each.value.authentication_key_id
+  key_secure_mode     = each.value.authentication_key_secure_mode
   keychain            = each.value.authentication_keychain
   md5_key             = each.value.authentication_md5_key
-  md5_key_secure_mode = each.value.authentication_md5_key_secure_mode != null ? each.value.authentication_md5_key_secure_mode : false
+  md5_key_secure_mode = each.value.authentication_md5_key_secure_mode
   type                = each.value.authentication_type
 
   depends_on = [
