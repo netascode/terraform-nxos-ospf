@@ -64,13 +64,13 @@ module "nxos_ospf" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_nxos"></a> [nxos](#requirement\_nxos) | >= 0.3.10 |
+| <a name="requirement_nxos"></a> [nxos](#requirement\_nxos) | >= 0.5.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_nxos"></a> [nxos](#provider\_nxos) | >= 0.3.10 |
+| <a name="provider_nxos"></a> [nxos](#provider\_nxos) | >= 0.5.0 |
 
 ## Inputs
 
@@ -90,9 +90,9 @@ module "nxos_ospf" {
 
 | Name | Type |
 |------|------|
-| [nxos_ospf_area.ospfArea](https://registry.terraform.io/providers/netascode/nxos/latest/docs/resources/ospf_area) | resource |
-| [nxos_ospf_authentication.ospfAuthNewP](https://registry.terraform.io/providers/netascode/nxos/latest/docs/resources/ospf_authentication) | resource |
-| [nxos_ospf_instance.ospfInst](https://registry.terraform.io/providers/netascode/nxos/latest/docs/resources/ospf_instance) | resource |
-| [nxos_ospf_interface.ospfIf](https://registry.terraform.io/providers/netascode/nxos/latest/docs/resources/ospf_interface) | resource |
-| [nxos_ospf_vrf.ospfDom](https://registry.terraform.io/providers/netascode/nxos/latest/docs/resources/ospf_vrf) | resource |
+| [nxos_ospf_area.ospfArea](https://registry.terraform.io/providers/CiscoDevNet/nxos/latest/docs/resources/ospf_area) | resource |
+| [nxos_ospf_authentication.ospfAuthNewP](https://registry.terraform.io/providers/CiscoDevNet/nxos/latest/docs/resources/ospf_authentication) | resource |
+| [nxos_ospf_instance.ospfInst](https://registry.terraform.io/providers/CiscoDevNet/nxos/latest/docs/resources/ospf_instance) | resource |
+| [nxos_ospf_interface.ospfIf](https://registry.terraform.io/providers/CiscoDevNet/nxos/latest/docs/resources/ospf_interface) | resource |
+| [nxos_ospf_vrf.ospfDom](https://registry.terraform.io/providers/CiscoDevNet/nxos/latest/docs/resources/ospf_vrf) | resource |
 <!-- END_TF_DOCS -->
