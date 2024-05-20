@@ -19,7 +19,7 @@ variable "vrfs" {
   OSPF VRF list.
   Default value `admin_state`: `true`.
   Default value `bandwidth_reference`: `40000`.
-  Choices `banwidth_reference_unit`: `mbps`, `gbps`. Default value `banwidth_reference_unit`: `mbps`.
+  Choices `bandwidth_reference_unit`: `mbps`, `gbps`. Default value `bandwidth_reference_unit`: `mbps`.
   Default value `distance`: `110`.
   List `areas`:
   Allowed formats `area`: `0.0.0.10`. Default value `area`: `0.0.0.0`.
@@ -43,12 +43,12 @@ variable "vrfs" {
   Choices `authentication_type`: `unspecified`, `simple`, `md5`, `none`. Default value `authentication_type`: `unspecified`.
   EOT
   type = list(object({
-    vrf                     = string
-    admin_state             = optional(bool, true)
-    bandwidth_reference     = optional(number, 40000)
-    banwidth_reference_unit = optional(string, "mbps")
-    distance                = optional(number, 110)
-    router_id               = optional(string, "0.0.0.0")
+    vrf                      = string
+    admin_state              = optional(bool, true)
+    bandwidth_reference      = optional(number, 40000)
+    bandwidth_reference_unit = optional(string, "mbps")
+    distance                 = optional(number, 110)
+    router_id                = optional(string, "0.0.0.0")
     # adjancency_logging_level = optional(string)
     areas = optional(list(object({
       area                = string
@@ -80,9 +80,9 @@ variable "vrfs" {
 
   validation {
     condition = alltrue([
-      for v in var.vrfs : try(contains(["mbps", "gbps"], v.banwidth_reference_unit), v.banwidth_reference_unit == null)
+      for v in var.vrfs : try(contains(["mbps", "gbps"], v.bandwidth_reference_unit), v.bandwidth_reference_unit == null)
     ])
-    error_message = "`banwidth_reference_unit`: Allowed values are: `mbps` or `gbps`."
+    error_message = "`bandwidth_reference_unit`: Allowed values are: `mbps` or `gbps`."
   }
 
   validation {

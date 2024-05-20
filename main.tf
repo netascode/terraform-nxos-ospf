@@ -25,15 +25,15 @@ resource "nxos_ospf_instance" "ospfInst" {
 }
 
 resource "nxos_ospf_vrf" "ospfDom" {
-  for_each                = local.vrf_map
-  device                  = var.device
-  instance_name           = var.name
-  name                    = each.value.vrf
-  admin_state             = each.value.admin_state == true ? "enabled" : "disabled"
-  bandwidth_reference     = each.value.bandwidth_reference
-  banwidth_reference_unit = each.value.banwidth_reference_unit
-  distance                = each.value.distance
-  router_id               = each.value.router_id
+  for_each                 = local.vrf_map
+  device                   = var.device
+  instance_name            = var.name
+  name                     = each.value.vrf
+  admin_state              = each.value.admin_state == true ? "enabled" : "disabled"
+  bandwidth_reference      = each.value.bandwidth_reference
+  bandwidth_reference_unit = each.value.bandwidth_reference_unit
+  distance                 = each.value.distance
+  router_id                = each.value.router_id
 
   depends_on = [
     nxos_ospf_instance.ospfInst
