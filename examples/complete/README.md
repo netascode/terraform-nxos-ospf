@@ -19,12 +19,12 @@ module "nxos_ospf" {
   name = "OSPF1"
   vrfs = [
     {
-      vrf                     = "default"
-      admin_state             = false
-      bandwidth_reference     = 1000
-      banwidth_reference_unit = "gbps"
-      distance                = 120
-      router_id               = "100.1.1.1"
+      vrf                      = "default"
+      admin_state              = false
+      bandwidth_reference      = 1000
+      bandwidth_reference_unit = "gbps"
+      distance                 = 120
+      router_id                = "100.1.1.1"
       areas = [
         {
           area = "0.0.0.0"

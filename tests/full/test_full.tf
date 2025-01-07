@@ -51,12 +51,12 @@ module "main" {
   name = "OSPF1"
   vrfs = [
     {
-      vrf                     = "default"
-      admin_state             = false
-      bandwidth_reference     = 1000
-      banwidth_reference_unit = "gbps"
-      distance                = 120
-      router_id               = "100.1.1.1"
+      vrf                      = "default"
+      admin_state              = false
+      bandwidth_reference      = 1000
+      bandwidth_reference_unit = "gbps"
+      distance                 = 120
+      router_id                = "100.1.1.1"
       areas = [
         {
           area = "0.0.0.0"
@@ -134,9 +134,9 @@ resource "test_assertions" "nxos_ospf_vrf" {
     want        = 1000
   }
 
-  equal "banwidth_reference_unit" {
-    description = "banwidth_reference_unit"
-    got         = data.nxos_ospf_vrf.ospfDom.banwidth_reference_unit
+  equal "bandwidth_reference_unit" {
+    description = "bandwidth_reference_unit"
+    got         = data.nxos_ospf_vrf.ospfDom.bandwidth_reference_unit
     want        = "gbps"
   }
 
