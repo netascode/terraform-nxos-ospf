@@ -1,3 +1,7 @@
+## 0.3.1 (unreleased)
+
+- BREAKING CHANGE: Change `banwidth_reference_unit` variable name to `bandwidth_reference_unit`
+
 ## 0.3.0
 
 - Use migrated provider in CiscoDevNet registry namespace
