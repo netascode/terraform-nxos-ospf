@@ -1,4 +1,4 @@
-## 0.3.1 (unreleased)
+## 0.3.1
 
 - BREAKING CHANGE: Change `banwidth_reference_unit` variable name to `bandwidth_reference_unit`
 

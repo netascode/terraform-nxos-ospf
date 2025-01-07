@@ -1,6 +1,6 @@
 module "nxos_ospf" {
   source  = "netascode/ospf/nxos"
-  version = ">= 0.2.0"
+  version = ">= 0.3.1"
 
   name = "OSPF1"
   vrfs = [
